@@ -14,8 +14,8 @@ module Blinkofant
 			end
 
 			def main_loop
-				sleep(1)
 				while true do
+					sleep(0.5)
 					@screen.blank
 
 					@ship1.left
