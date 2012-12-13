@@ -8,10 +8,10 @@ module Blinkofant
       @fd = IO::sysopen(@device, Fcntl::O_WRONLY)
     end
 
-    def flush
+    def flush(screen)
       f = IO.open(fd)
       f.ioctl(4, 100000)
-      f.syswrite("TEMP DATA")
+      f.syswrite(screen.bit_stream)
       f.close
     end
   end
