@@ -14,8 +14,8 @@ module Blinkofant
     end
 
     def flush(screen)
-      @io.write(MY_PIN,LOW)
-      @io.read(MY_PIN)
+      @io.write(DARKEN_PIN,LOW)
+      @io.read(DARKEN_PIN)
       
       @fd = IO::sysopen(@device, Fcntl::O_WRONLY)
       f = IO.open(@fd)
@@ -24,8 +24,8 @@ module Blinkofant
       f.write(screen.bit_stream.pack("C*"))
       f.close
 
-      @io.write(MY_PIN,HIGH)
-      @io.read(MY_PIN)
+      @io.write(DARKEN_PIN,HIGH)
+      @io.read(DARKEN_PIN)
     end
   end
 end
