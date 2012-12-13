@@ -10,10 +10,10 @@ module Blinkofant
 				@device = Device.new
 				@ship1 = Ship.new(@screen)
 
-				loop
+				main_loop
 			end
 
-			def loop
+			def main_loop
 				sleep(1)
 				while true do
 					@screen.blank
@@ -23,8 +23,10 @@ module Blinkofant
 					
 					@device.flush(@screen)
 				end
-				
 			end
 		end
 	end
 end
+
+
+g = Blinkofant::Pong::Game.new
