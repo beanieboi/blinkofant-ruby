@@ -1,6 +1,6 @@
 require './screen'
 require './device'
-require './ship'
+require './pong/ship'
 
 module Blinkofant
 	module Pong
