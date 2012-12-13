@@ -4,14 +4,14 @@ module Blinkofant
     EIGHT_BITS = /......../
 
     def initialize
-      @screen = [[false, false, false, false, false, false, false, false, false],
-                 [false, false, false, false, false, false, false, false, false],
-                 [false, false, false, false, false, false, false, false, false],
-                 [false, false, false, false, false, false, false, false, false],
-                 [false, false, false, false, false, false, false, false, false],
-                 [false, false, false, false, false, false, false, false, false],
-                 [false, false, false, false, false, false, false, false, false],
-                 [false, false, false, false, false, false, false, false, false]]
+      @screen = [[false, true, false, false, false, false, false, false, false],
+                 [false, true, false, false, false, false, false, false, false],
+                 [false, true, false, false, false, false, false, false, false],
+                 [false, true, false, false, false, false, false, false, false],
+                 [false, true, false, false, false, false, false, false, false],
+                 [false, true, false, false, false, false, false, false, false],
+                 [false, true, false, false, false, false, false, false, false],
+                 [false, true, false, false, false, false, false, false, false]]
 
       @blink_bit = "1"
     end
@@ -22,6 +22,14 @@ module Blinkofant
 
     def row(row, value)
       @screen[row].map! { |p| p = value}
+    end
+
+    def shift_cols
+      @screen.each { |row| row << row.shift }
+    end
+
+    def shift_rows
+      @screen << @screen.shift
     end
 
     def []=(row, col, value)
