@@ -3,7 +3,7 @@ module Blinkofant
 		class Ship
 			def initialize(screen)
 				@screen = screen
-				@x = 5
+				@x = 0
 				@y = 0
 			end
 
