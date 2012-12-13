@@ -1,3 +1,7 @@
+require './screen'
+require './device'
+require './ship'
+
 module Blinkofant
 	module Pong
 		class Game
