@@ -53,11 +53,11 @@ module Blinkofant
     end
 
     def max_x
-      @screen.first.size
+      @screen.first.size - 1
     end
 
     def max_y
-      @screen.size
+      @screen.size - 1
     end
 
     def blank
