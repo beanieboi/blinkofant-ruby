@@ -49,5 +49,24 @@ module Blinkofant
     def bit_stream
       ascii_bit_stream_with_blink.scan(EIGHT_BITS).map { |b| b.to_i(2) }
     end
+
+    def max_x
+      @screen.first.size
+    end
+
+    def max_y
+      @screen.size
+    end
+
+    def blank
+      @screen = [[false, false, false, false, false, false, false, false, false],
+                 [false, false, false, false, false, false, false, false, false],
+                 [false, false, false, false, false, false, false, false, false],
+                 [false, false, false, false, false, false, false, false, false],
+                 [false, false, false, false, false, false, false, false, false],
+                 [false, false, false, false, false, false, false, false, false],
+                 [false, false, false, false, false, false, false, false, false],
+                 [false, false, false, false, false, false, false, false, false]]
+    end
   end
 end
