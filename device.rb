@@ -9,13 +9,13 @@ module Blinkofant
     def initialize
       @device = '/dev/spidev0.0'
 
-      io = WiringPi::GPIO.new
-      io.mode(DARKEN_PIN,OUTPUT)
+      @io = WiringPi::GPIO.new
+      @io.mode(DARKEN_PIN,OUTPUT)
     end
 
     def flush(screen)
-      io.write(MY_PIN,LOW)
-      io.read(MY_PIN)
+      @io.write(MY_PIN,LOW)
+      @io.read(MY_PIN)
       
       @fd = IO::sysopen(@device, Fcntl::O_WRONLY)
       f = IO.open(@fd)
@@ -24,8 +24,8 @@ module Blinkofant
       f.write(screen.bit_stream.pack("C*"))
       f.close
 
-      io.write(MY_PIN,HIGH)
-      io.read(MY_PIN)
+      @io.write(MY_PIN,HIGH)
+      @io.read(MY_PIN)
     end
   end
 end
