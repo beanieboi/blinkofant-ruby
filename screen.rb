@@ -2,17 +2,18 @@ module Blinkofant
   class Screen
     NINE_BITS =  /........./
     EIGHT_BITS = /......../
+    PANELS = 1
 
     def initialize
-      @screen = [ Array.new(32, false),
-                  Array.new(32, false),
-                  Array.new(32, false),
-                  Array.new(32, false),
-                  Array.new(32, false),
-                  Array.new(32, false),
-                  Array.new(32, false),
-                  Array.new(32, false),
-                  Array.new(32, false)]
+      @screen = [ Array.new(PANELS * 8, false),
+                  Array.new(PANELS * 8, false),
+                  Array.new(PANELS * 8, false),
+                  Array.new(PANELS * 8, false),
+                  Array.new(PANELS * 8, false),
+                  Array.new(PANELS * 8, false),
+                  Array.new(PANELS * 8, false),
+                  Array.new(PANELS * 8, false),
+                  Array.new(PANELS * 8, false)]
 
       @blink_bit = "1"
     end
@@ -42,7 +43,7 @@ module Blinkofant
     # convert to bit stream
     def ascii_bit_stream
       s = ""
-      0.upto(32) do |col|
+      0.upto((PANELS * 8)-1) do |col|
         @screen.each do |row|
           s << (row[col] ? "1" : "0")
         end
@@ -52,7 +53,7 @@ module Blinkofant
 
     # add blink bit (first bit)
     def ascii_bit_stream_with_blink
-      ascii_bit_stream.scan(EIGHT_BITS).map { |b| (@blink_bit + b) }.join("")
+      ascii_bit_stream.scan(NINE_BITS).map { |b| (@blink_bit + b) }.join("")
     end
 
     def bit_stream
