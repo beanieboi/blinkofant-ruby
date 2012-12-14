@@ -2,7 +2,7 @@ module Blinkofant
   class Screen
     NINE_BITS =  /........./
     EIGHT_BITS = /......../
-    PANELS = 1
+    PANELS = 4
 
     def initialize
       @screen = [ Array.new(PANELS * 8, false),
