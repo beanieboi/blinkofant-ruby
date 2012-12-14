@@ -4,14 +4,15 @@ module Blinkofant
     EIGHT_BITS = /......../
 
     def initialize
-      @screen = [[false, true, false, false, false, false, false, false, false],
-                 [false, true, false, false, false, false, false, false, false],
-                 [false, true, false, false, false, false, false, false, false],
-                 [false, true, false, false, false, false, false, false, false],
-                 [false, true, false, false, false, false, false, false, false],
-                 [false, true, false, false, false, false, false, false, false],
-                 [false, true, false, false, false, false, false, false, false],
-                 [false, true, false, false, false, false, false, false, false]]
+      @screen = [ Array.new(32, false),
+                  Array.new(32, false),
+                  Array.new(32, false),
+                  Array.new(32, false),
+                  Array.new(32, false),
+                  Array.new(32, false),
+                  Array.new(32, false),
+                  Array.new(32, false),
+                  Array.new(32, false)]
 
       @blink_bit = "1"
     end
@@ -40,12 +41,18 @@ module Blinkofant
 
     # convert to bit stream
     def ascii_bit_stream
-      @screen.flatten.inject("") { |r, p| r << (p ? "1" : "0") }
+      s = ""
+      0.upto(32) do |col|
+        @screen.each do |row|
+          s << (row[col] ? "1" : "0")
+        end
+      end
+      s
     end
 
     # add blink bit (first bit)
     def ascii_bit_stream_with_blink
-      ascii_bit_stream.scan(NINE_BITS).map { |b| (@blink_bit + b) }.join("")
+      ascii_bit_stream.scan(EIGHT_BITS).map { |b| (@blink_bit + b) }.join("")
     end
 
     def bit_stream
