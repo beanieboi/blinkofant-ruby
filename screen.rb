@@ -35,8 +35,6 @@ module Blinkofant
     end
 
     def []=(row, col, value)
-      puts row
-      puts col
       @screen[row][col] = value
     end
 
