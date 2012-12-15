@@ -23,6 +23,14 @@ module Blinkofant
       @screen.each { |row| row[col]= value}
     end
 
+    def set_col(index, new_col)
+      @screen[index] = new_col
+    end
+
+    def set_row(index, new_row)
+      @screen[index] = new_row
+    end
+
     def row(row, value)
       @screen[row].map! { |p| p = value}
     end
