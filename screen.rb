@@ -39,6 +39,14 @@ module Blinkofant
       @screen[col][row] = value
     end
 
+    def max_x
+      return 7
+    end
+
+    def max_y
+      return 9*@panels
+    end
+
     # convert to bit stream
     def ascii_bit_stream
       s = ""
