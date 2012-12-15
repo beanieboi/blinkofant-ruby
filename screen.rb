@@ -4,7 +4,8 @@ module Blinkofant
     EIGHT_BITS = /......../
     PANELS = 4
 
-    def initialize
+    def initialize(panels = 4)
+      @PANELS = panels
       @screen = [ Array.new(PANELS * 8, false),
                   Array.new(PANELS * 8, false),
                   Array.new(PANELS * 8, false),
