@@ -2,19 +2,18 @@ module Blinkofant
   class Screen
     NINE_BITS =  /........./
     EIGHT_BITS = /......../
-    PANELS = 4
 
     def initialize(panels = 4)
-      @PANELS = panels
-      @screen = [ Array.new(PANELS * 8, false),
-                  Array.new(PANELS * 8, false),
-                  Array.new(PANELS * 8, false),
-                  Array.new(PANELS * 8, false),
-                  Array.new(PANELS * 8, false),
-                  Array.new(PANELS * 8, false),
-                  Array.new(PANELS * 8, false),
-                  Array.new(PANELS * 8, false),
-                  Array.new(PANELS * 8, false)]
+      @panels = panels
+      @screen = [ Array.new(@panels * 8, false),
+                  Array.new(@panels * 8, false),
+                  Array.new(@panels * 8, false),
+                  Array.new(@panels * 8, false),
+                  Array.new(@panels * 8, false),
+                  Array.new(@panels * 8, false),
+                  Array.new(@panels * 8, false),
+                  Array.new(@panels * 8, false),
+                  Array.new(@panels * 8, false)]
 
       @blink_bit = "1"
     end
@@ -42,7 +41,7 @@ module Blinkofant
     # convert to bit stream
     def ascii_bit_stream
       s = ""
-      0.upto((PANELS * 8)-1) do |col|
+      0.upto((@panels * 8)-1) do |col|
         @screen.each do |row|
           s << (row[col] ? "1" : "0")
         end
