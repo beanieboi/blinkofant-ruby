@@ -33,11 +33,11 @@ module Blinkofant
       @screen.each { |row| row[col]= value}
     end
 
-    def set_col(index, new_col)
+    def col=(index, new_col)
       @screen[index] = new_col
     end
 
-    def set_row(index, new_row)
+    def row=(index, new_row)
       @screen[index] = new_row
     end
 
