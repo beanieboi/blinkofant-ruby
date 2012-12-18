@@ -33,6 +33,14 @@ module Blinkofant
       @screen.each { |row| row[col]= value}
     end
 
+    def set_col(index, new_col)
+      @screen[index] = new_col
+    end
+
+    def set_row(index, new_row)
+      @screen[index] = new_row
+    end
+
     def row(row, value)
       @screen[row].map! { |p| p = value}
     end
@@ -47,6 +55,14 @@ module Blinkofant
 
     def []=(row, col, value)
       @screen[col][row] = value
+    end
+
+    def max_x
+      return 7
+    end
+
+    def max_y
+      return 9*@panels
     end
 
     # convert to bit stream
