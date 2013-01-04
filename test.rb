@@ -1,14 +1,14 @@
-require './screen'
-require './device'
+require_relative 'screen'
+require_relative 'device'
 
-d = Blinkofant::Device.new
-s = Blinkofant::Screen.new
+screen = Blinkofant::Screen.new
+device = Blinkofant::Device.new(screen)
 
 s.row(1, true)
-d.flush(s)
+d.flush
 
 while true do
   s.shift_rows
-  d.flush(s)
+  d.flush
   sleep(1)
 end
