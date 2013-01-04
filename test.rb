@@ -4,11 +4,11 @@ require_relative 'device'
 screen = Blinkofant::Screen.new
 device = Blinkofant::Device.new(screen)
 
-s.row(1, true)
-d.flush
+screen.row(1, true)
+device.flush
 
 while true do
-  s.shift_rows
-  d.flush
+  screen.shift_rows
+  device.flush
   sleep(1)
 end
